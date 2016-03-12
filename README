@@ -1,0 +1,9 @@
+In this project, I implemented a simple memory allocator.
+
+The main specification/limitation that made the project challenging was the need to embed metadata about what regions of memory were occupied within the region that I was making available to callers.
+
+I decided to accomplish this by using a fairly simple list data structure -- each entry of the list (representing an occupied block of memory) had an integer indicting the amount of space used by the block, and a pointer to the next entry in the list. The tail of the list simply had a null pointer in "next." The head of the list was somewhat special -- its corresponding integer didn't indicate how much space was /used/, but how large the entire /region/ of memory from the OS was.
+
+Pointer arithmetic in C took some getting used to -- I kept getting confused about why the expression (ptr + 1) would return an address a seemingly arbitrary distance from "ptr" depending on the type that it pointed to. I seem to have avoided using pointer arithmetic in my C programming 'career' thus far, opting instead for the more intuitive (to me, at least) array index arithmetic. But the C bible cleared everything up pretty painlessly.
+
+Fun project!
